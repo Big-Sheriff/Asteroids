@@ -1,6 +1,8 @@
 import pygame
-from constants import SCREEN_WIDTH, SCREEN_HEIGHT
+from constants import *
 from logger import log_state
+from player import Player
+from circleshape import CircleShape
 
 
 def main():
@@ -11,6 +13,7 @@ def main():
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     clock = pygame.time.Clock()
     dt = 0.0
+    player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
     while True:
         log_state()
         for event in pygame.event.get():
@@ -18,6 +21,7 @@ def main():
                 pygame.quit()
                 return
         screen.fill((0, 0, 0))
+        player.draw(screen)
         pygame.display.update()
         dt = clock.tick(60) / 1000.0  # Limit to 60 FPS and get delta time in seconds
 
