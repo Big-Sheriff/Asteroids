@@ -21,6 +21,7 @@ def main():
                 pygame.quit()
                 return
         screen.fill((0, 0, 0))
+        player.update(dt)
         player.draw(screen)
         pygame.display.update()
         dt = clock.tick(60) / 1000.0  # Limit to 60 FPS and get delta time in seconds
