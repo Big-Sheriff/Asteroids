@@ -62,7 +62,7 @@ def main():
             for asteroid in asteroids:
                 if shot.collides_with(asteroid):
                     log_event("asteroid_shot")
-                    asteroid.kill()
+                    asteroid.split()
                     shot.kill()
         # Limit to 60 FPS and get delta time in seconds
         dt = clock.tick(60) / 1000.0  # Limit to 60 FPS and get delta time in seconds
