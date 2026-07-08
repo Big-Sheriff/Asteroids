@@ -57,6 +57,13 @@ def main():
                 log_event("player_hit")
                 print("Game Over!")
                 sys.exit()
+        # Check for collisions between shots and asteroids
+        for shot in shots:
+            for asteroid in asteroids:
+                if shot.collides_with(asteroid):
+                    log_event("asteroid_shot")
+                    asteroid.kill()
+                    shot.kill()
         # Limit to 60 FPS and get delta time in seconds
         dt = clock.tick(60) / 1000.0  # Limit to 60 FPS and get delta time in seconds
 
