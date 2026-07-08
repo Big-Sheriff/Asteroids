@@ -1,7 +1,8 @@
 import pygame
-from constants import *
+import sys
 
-from logger import log_state
+from constants import *
+from logger import log_state, log_event
 from player import Player
 from circleshape import CircleShape
 from asteroid import Asteroid
@@ -46,6 +47,12 @@ def main():
             object.draw(screen)
         # Update the display and tick the clock
         pygame.display.update()
+        # Check for collisions between the player and asteroids
+        for asteroid in asteroids:
+            if player.collides_with(asteroid):
+                log_event("player_hit")
+                print("Game Over!")
+                sys.exit()
         # Limit to 60 FPS and get delta time in seconds
         dt = clock.tick(60) / 1000.0  # Limit to 60 FPS and get delta time in seconds
 
